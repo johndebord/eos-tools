@@ -1,0 +1,84 @@
+#!/bin/bash
+
+EOS_DEV_PRIVATE_KEY=5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
+EOS_DEV_PUBLIC_KEY=EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+
+print_separator () {
+    echo -------------------------------------------------------------------------------
+}
+
+# Destroy `nohup.out', `eosio-wallet', and `WALLY' and start with a clean slate
+clean_directory () {
+    NODEOS_PID=$(ps aux | grep '[n]odeos' | awk '{print $2}')
+    kill $NODEOS_PID
+    rm nohup.out
+    rm -r /home/i/eosio-wallet/
+    rm /home/i/WALLY
+    print_separator
+    echo "Cleaned up files and directories"
+}
+
+start_nodeos () {
+    nohup nodeos -e -p eosio \
+	  --plugin eosio::chain_api_plugin \
+	  --plugin eosio::history_api_plugin \
+	  --contracts-console \
+	  --delete-all-blocks &
+    print_separator
+    echo "Started up blockchain"
+    print_separator
+}
+
+# Create the default wallet; save password to the file `WALLY' and import 1 key-pair
+configure_wallet () {
+    cleos wallet create --file WALLY
+    print_separator
+    WALLET_PASSWORD=$(cat WALLY)    
+    cleos wallet import --private-key $EOS_DEV_PRIVATE_KEY
+    print_separator
+}
+
+configure_accounts () {
+    sleep 1s
+    cleos create account eosio deployer $EOS_DEV_PUBLIC_KEY
+    print_separator
+
+    sleep 1s
+    cleos create account eosio code $EOS_DEV_PUBLIC_KEY
+    print_separator
+}
+
+deploy_contract () {
+    sleep 1s
+    cleos set contract code \
+	  /home/i/repos/temp/eosio.contracts/eosio.token \
+	  --abi eosio.token.abi \
+	  -p code@active
+    print_separator
+}
+
+push_action () {
+    sleep 1s
+    cleos push action code hi '["deployer"]' -p deployer@active
+    print_separator
+}
+
+if [ "$1" = "init" ]
+then
+    clean_directory
+    start_nodeos
+    configure_wallet
+elif [ "$1" = "acc" ]
+then
+    configure_accounts
+elif [ "$1" = "deploy" ]
+then
+    deploy_contract
+elif [ "$1" = "action" ]
+then
+    push_action
+else
+    echo "Invalid option"
+    echo "Usage: ./a.out [[init] | [acc] | [deploy contract-directory abi-file ]]"
+    exit 1
+fi
