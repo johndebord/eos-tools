@@ -1,0 +1,92 @@
+api_tests.cpp
+.//api_tests.cpp:248:	set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:255:	set_code( N(testapi), test_api_db_wast );
+.//api_tests.cpp:256:   set_code( config::system_account_name, test_api_db_wast );
+.//api_tests.cpp:276:   set_code( config::system_account_name, eosio_bios_wast );
+.//api_tests.cpp:278:	set_code( N(testapi), eosio_bios_wast );
+.//api_tests.cpp:280:	set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:298:	set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:446:   set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:447:   set_code( N(acc5), test_api_wast );
+.//api_tests.cpp:469:   set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:471:   set_code( N(testapi2), test_api_wast );
+.//api_tests.cpp:493:   set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:621:	set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:651:	set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:687:	set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:728:	set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:761:   t.set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:837:	set_code( N(testapi), ss.str().c_str() );
+.//api_tests.cpp:857:	set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:910:	set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:969:   set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:1055:  set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:1056:  set_code( N(testapi2), test_api_wast );
+.//api_tests.cpp:1271:  set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:1292:  set_code( N(testapi), test_api_db_wast );
+.//api_tests.cpp:1293:  set_code( N(testapi2), test_api_db_wast );
+.//api_tests.cpp:1379:  set_code( N(testapi), test_api_multi_index_wast );
+.//api_tests.cpp:1443:	set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:1746:	set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:1765:  set_code( N(testapi), test_api_wast );
+.//api_tests.cpp:1873:	set_code( N(testapi), test_api_wast );
+
+auth_tests.cpp
+block_tests.cpp
+block_timestamp_tests.cpp
+bootseq_tests.cpp
+
+currency_tests.cpp
+.//currency_tests.cpp:81:         set_code( N(eosio.token), eosio_token_wast );
+
+database_tests.cpp
+delay_tests.cpp
+
+eosio.sudo_tests.cpp
+.//eosio.sudo_tests.cpp:40:      set_code( N(eosio.msig), eosio_msig_wast );
+.//eosio.sudo_tests.cpp:67:      set_code( N(eosio.sudo), eosio_sudo_wast, &system_private_key );
+
+eosio.system_tests.cpp
+
+eosio.token_tests.cpp
+.//eosio.token_tests.cpp:30:      set_code( N(eosio.token), eosio_token_wast );
+
+eosio_system_tester.hpp
+.//eosio_system_tester.hpp:55:      set_code( N(eosio.token), eosio_token_wast );
+.//eosio_system_tester.hpp:69:      set_code( config::system_account_name, eosio_system_wast );
+.//eosio_system_tester.hpp:420:         set_code( N(eosio.msig), eosio_msig_wast );
+
+forked_tests.cpp
+.//forked_tests.cpp:161:   c.set_code( N(eosio.token), eosio_token_wast );
+
+fuzz13.wasm
+incbin.h
+message_buffer_tests.cpp
+misc_tests.cpp
+
+multi_index_tests.cpp
+.//multi_index_tests.cpp:28:   set_code( N(multitest), multi_index_test_wast );
+
+multisig_tests.cpp
+.//multisig_tests.cpp:42:      set_code( N(eosio.msig), eosio_msig_wast );
+.//multisig_tests.cpp:403:   set_code( N(eosio.token), eosio_token_wast );
+.//multisig_tests.cpp:411:   set_code( config::system_account_name, eosio_system_wast );
+.//multisig_tests.cpp:515:   set_code( N(eosio.token), eosio_token_wast );
+.//multisig_tests.cpp:522:   set_code( config::system_account_name, eosio_system_wast );
+
+producer_schedule_tests.cpp
+
+ram_tests.cpp
+.//ram_tests.cpp:50:         set_code( N(testram11111), test_ram_limit_wast );
+.//ram_tests.cpp:71:   set_code( N(testram22222), test_ram_limit_wast );
+
+resource_limits_test.cpp
+snapshot_tests.cpp
+special_accounts_tests.cpp
+tic_tac_toe_tests.cpp
+wasm_tests.cpp
+whitelist_blacklist_tests.cpp
+.//whitelist_blacklist_tests.cpp:356:   tester1.chain->set_code( N(bob), deferred_test_wast );
+.//whitelist_blacklist_tests.cpp:358:   tester1.chain->set_code( N(charlie), deferred_test_wast );
+.//whitelist_blacklist_tests.cpp:407:   tester1.chain->set_code( N(bob), deferred_test_wast );
+.//whitelist_blacklist_tests.cpp:409:   tester1.chain->set_code( N(charlie), deferred_test_wast );
