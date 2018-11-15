@@ -1,33 +1,36 @@
 #!/bin/bash
 
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-    if [ "$1" = "b" ]
-    then
+function build () {
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
 	cd /home/i/forks/eos
-	./eosio_build.sh
-    elif [ "$1" = "t" ]
-    then
-	cd /home/i/forks/eos/build/unittests
-	./unit_test
     else
-	echo "Invalid option"
-	echo "Usage: et [b | t]"
-	echo "b == build | t == test"
-	exit 1
-    fi
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    if [ "$1" = "b" ]
-    then
 	cd /Users/johndebord/forks/eos
-	./eosio_build.sh
-    elif [ "$1" = "t" ]
-    then
-	cd /Users/johndebord/forks/eos/build/unittests
-	./unit_test
-    else
-	echo "Invalid option"
-	echo "Usage: et [b | t]"
-	echo "b == build | t == test"
-	exit 1
     fi
+    ./eosio_build.sh
+}
+
+function tester () {
+    if [[ "$OSTYPE" == "linux-gnu" ]]; then
+	cd /home/i/forks/eos/build/unittests
+    else
+	cd /Users/johndebord/forks/eos/build/unittests
+    fi
+    ./unit_test
+}
+
+if [ "$1" = "b" ]
+then
+    build
+elif [ "$1" = "t" ]
+then
+    tester
+elif [ "$1" = "a" ]
+then
+    build;
+    tester;
+else
+    echo "Invalid option"
+    echo "Usage: et [b | t | a]"
+    echo "b == build | t == test | a == all"
+    exit 1
 fi
