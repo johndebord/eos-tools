@@ -1,33 +1,33 @@
 #!/bin/bash
 
-# # Mac
-# if [ "$1" = "b" ]
-# then
-#     cd /Users/johndebord/forks/eos
-#     ./eosio_build.sh
-# elif [ "$1" = "t" ]
-# then
-#     cd /Users/johndebord/forks/eos/build/unittests
-#     ./unit_test
-# else
-#     echo "Invalid option"
-#     echo "Usage: et [b | t]"
-#     echo "b == build | t == test"
-#     exit 1
-# fi
-
-# Linux
-if [ "$1" = "b" ]
-then
-    cd /home/i/forks/eos
-    ./eosio_build.sh
-elif [ "$1" = "t" ]
-then
-    cd /home/i/forks/eos/build/unittests
-    ./unit_test
-else
-    echo "Invalid option"
-    echo "Usage: et [b | t]"
-    echo "b == build | t == test"
-    exit 1
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    if [ "$1" = "b" ]
+    then
+	cd /home/i/forks/eos
+	./eosio_build.sh
+    elif [ "$1" = "t" ]
+    then
+	cd /home/i/forks/eos/build/unittests
+	./unit_test
+    else
+	echo "Invalid option"
+	echo "Usage: et [b | t]"
+	echo "b == build | t == test"
+	exit 1
+    fi
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+    if [ "$1" = "b" ]
+    then
+	cd /Users/johndebord/forks/eos
+	./eosio_build.sh
+    elif [ "$1" = "t" ]
+    then
+	cd /Users/johndebord/forks/eos/build/unittests
+	./unit_test
+    else
+	echo "Invalid option"
+	echo "Usage: et [b | t]"
+	echo "b == build | t == test"
+	exit 1
+    fi
 fi
