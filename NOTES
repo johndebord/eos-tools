@@ -50,10 +50,11 @@ BUG
 --- * auth_tests.cpp ERROR: {"a":"updateauth"}
 --- * delay_tests.cpp ERROR: {"a":"updateauth"}
 DEPRECATED
---- * tic_tac_toe_tests.cpp depends on: `proxy'
---- * wasm_tests.cpp depends on: `asserter' `stltest' `noop' `eosio.system'
+--- * tic_tac_toe_tests.cpp DEPENDS ON: `proxy'
+--- * wasm_tests.cpp DEPENDS ON: `asserter' `stltest' `noop' `eosio.system'
 ---------------------------------------------------------------------------
 
+TESTS
 * api_tests.cpp DEPENDS ON: `test_api'
 ✔ block_tests.cpp
 ✔ block_timestamp_tests.cpp
@@ -73,5 +74,55 @@ DEPRECATED
 ✔ snapshot_tests.cpp
 ✔ special_accounts_tests.cpp
 ✔ whitelist_blacklist_tests.cpp
+
+GET TO COMPILE
+[ ] Get CMakeLists.txt working as well
+✔ stltest
+✔ test.inline
+* test_api
+  - test_action.cpp
+    NOTE line 160: commented out function
+    NOTE line 263: left off; conflicting function
+  - test_api.cpp DEPENDS ON `test_action.cpp'
+  - test_api.hpp
+  - test_api_common.hpp
+  - test_chain.cpp
+    NOTE line 160: commented out function
+  - test_checktime.cpp
+    NOTE line 36: `sha1' no matching function call
+  ✔ test_compiler_builtins.cpp
+  - test_crypto.cpp
+    NOTE: line 197: trouble with `assert_recover_key function'
+  ✔ test_datastream.cpp
+  ✔ test_fixedpoint.cpp
+  ✔ test_permission.cpp
+  - test_print.cpp
+    NOTE: line 69: no matching function call?
+  - test_transaction.cpp
+    NOTE: line 78/86/114/126: invalid function parameters
+  - test_types.cpp
+    NOTE: which functions are deprecated and which are not?
+    NOTE line 21: commenting out deprecated `time' type?
+* test_api_db
+  - test_api_db.cpp
+  - test_db.cpp
+* test_api_mem
+  - test_api_mem.cpp
+  - test_extended_memory.cpp
+  - test_memory.cpp
+* test_api_multi_index
+  - test_api_multi_index.cpp
+  - test_multi_index.cpp
+* test_ram_limit
+  - test_ram_limit.cpp
+
+TODO BEFORE PULL REQUEST
+[ ] Go over all contracts again and fully comprehend them
+[ ] Go over all tests and fully comprehend them
+[ ] Fix any discrepencies in the contracts
+[ ] Make sure to add appropriate file header in each file
+[ ] Make sure all tests work appropriatelly
+[ ] Delete any files and make it clear in the description which ones are deprecated
+[ ] Organize all changes
 
 /Users/johndebord/et a

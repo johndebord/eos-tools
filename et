@@ -16,6 +16,7 @@ function tester () {
 	cd /Users/johndebord/forks/eos/build/unittests
     fi
     ./unit_test
+    # ./unit_test --log_level=all -- --verbose
 }
 
 if [ "$1" = "b" ]
