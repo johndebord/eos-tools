@@ -81,9 +81,9 @@ GET TO COMPILE
 ✔ test.inline
 * test_api
   ✔ test_action.cpp
-  - test_api.cpp DEPENDS ON `test_action.cpp'
-  - test_api.hpp
-  - test_api_common.hpp
+  - test_api.cpp WASM_TEST_ERROR_HANDLER is the only thing in the way 
+  ✔ test_api.hpp
+  ✔ test_api_common.hpp
   ✔ test_chain.cpp
   ✔ test_checktime.cpp
   ✔ test_compiler_builtins.cpp
