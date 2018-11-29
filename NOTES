@@ -55,21 +55,26 @@ DEPRECATED
 ---------------------------------------------------------------------------
 
 TESTS
-* api_tests.cpp DEPENDS ON: `test_api'
+* api_tests.cpp
+  NOTE: no abi, so reflect that in the CMake file
+  ERRONEOUS TESTS: errors starting on lines: 846, 850, 861, 1108
 ✔ block_tests.cpp
 ✔ block_timestamp_tests.cpp
 ✔ bootseq_tests.cpp
-* currency_tests.cpp ERROR: Appears to start on line 437
+* currency_tests.cpp
+  NOTE (historical): Error appears to start on line 437
+  ERRONEOUS TESTS: `test_proxy', `test_deferred_failure' failing
 ✔ database_tests.cpp
 ✔ eosio.token_tests.cpp
 ✔ forked_tests.cpp
 ✔ message_buffer_tests.cpp
 ✔ misc_tests.cpp
 ✔ multi_index_tests.cpp
-* multisig_tests.cpp DEPENDS ON: `test_api'
+* multisig_tests.cpp
+  ERRONEOUS TESTS: `big_transaction', `update_system_contract_all_approve', `update_system_contract_major_approve'
 ✔ payloadless_tests.cpp
 ✔ producer_schedule_tests.cpp
-* ram_tests.cpp	DEPENDS ON: `test_api', `test_ram_limit'
+✔ ram_tests.cpp
 ✔ resource_limits_test.cpp
 ✔ snapshot_tests.cpp
 ✔ special_accounts_tests.cpp
@@ -80,29 +85,29 @@ GET TO COMPILE
 ✔ test.inline
 ✔ test_api
   ✔ test_action.cpp
-  ✔ test_api.cpp WASM_TEST_ERROR_HANDLER is the only thing in the way
+  ✔ test_api.cpp
   ✔ test_api.hpp
   ✔ test_api_common.hpp
   ✔ test_chain.cpp
   ✔ test_checktime.cpp
   ✔ test_compiler_builtins.cpp
-  ✔ test_crypto.cpp Compiles, but may not be right; lines 321, 348, 376, and 404
+  ✔ test_crypto.cpp
   ✔ test_datastream.cpp
   ✔ test_fixedpoint.cpp
   ✔ test_permission.cpp
   ✔ test_print.cpp
-  ✔ test_transaction.cpp Compiles, but must come back
-  ✔ test_types.cpp Compiles, but commented out odd statements
+  ✔ test_transaction.cpp
+  ✔ test_types.cpp
 ✔ test_api_db
   ✔ test_api_db.cpp
   ✔ test_db.cpp
-✔ test_api_mem NOTE: NOTE: is the header file in `test_memory.cpp' necessary?
+✔ test_api_mem NOTE:
   ✔ test_api_mem.cpp
   ✔ test_extended_memory.cpp
   ✔ test_memory.cpp
-✔ test_api_multi_index
+✔ test_api_multi_index NOTE: in `CMakeLists.txt' is having the `Boost_INCLUDE_DIRS' var okay?
   ✔ test_api_multi_index.cpp
-  ✔ test_multi_index.cpp NOTE: Line 400; weird error
+  ✔ test_multi_index.cpp
 ✔ test_ram_limit
   ✔ test_ram_limit.cpp
 
@@ -120,3 +125,4 @@ TODO BEFORE PULL REQUEST
 [ ] Make sure the spacing is correct
 
 /Users/johndebord/et a
+eosio-cpp -I../ -I/usr/local/include/ -c test_transaction.cpp 
