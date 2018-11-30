@@ -7,6 +7,7 @@ function build () {
 	cd /Users/johndebord/forks/eos
     fi
     ./eosio_build.sh
+    # ./eosio_build.sh -o Debug
 }
 
 function tester () {
@@ -16,7 +17,7 @@ function tester () {
 	cd /Users/johndebord/forks/eos/build/unittests
     fi
     ./unit_test
-    # ./unit_test --log_level=all -- --verbose
+    # ./unit_test --log_level=all --run_test=api_tests/checktime_fail_tests -- --verbose
 }
 
 if [ "$1" = "b" ]
