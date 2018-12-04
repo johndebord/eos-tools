@@ -16,8 +16,16 @@ function tester () {
     else
 	cd /Users/johndebord/forks/eos/build/unittests
     fi
-    ./unit_test
-    # ./unit_test --log_level=all --run_test=api_tests/checktime_fail_tests -- --verbose
+    # ./unit_test
+    # ./unit_test --log_level=all --run_test=api_tests/transaction_tests -- --verbose
+
+    # ./unit_test --log_level=message --run_test=api_tests/deferred_transaction_tests
+    # ./unit_test --log_level=message --run_test=api_tests/crypto_tests
+    # ./unit_test --log_level=message --run_test=api_tests/memory_tests
+    # ./unit_test --log_level=message --run_test=api_tests/extended_memory_test_page_memory_exceeded -- --verbose
+    ./unit_test --log_level=message --run_test=api_tests/print_tests
+    # ./unit_test --log_level=message --run_test=api_tests/types_tests
+    # ./unit_test --log_level=message --run_test=api_tests/permission_usage_tests
 }
 
 if [ "$1" = "b" ]

@@ -57,7 +57,14 @@ DEPRECATED
 TESTS
 * api_tests.cpp
   NOTE: no abi, so reflect that in the CMake file
-  ERRONEOUS TESTS: errors starting on lines: 846, 850, 861, 1108
+  api_tests/deferred_transaction_tests action's authorizing actor 'receiver' does not exist
+  api_tests/crypto_tests Error unpacking field _storage
+  .//libraries/fc/include/fc/static_variant.hpp:345:      FC_ASSERT( w < count()  );
+  api_tests/memory_tests {"s":"should allocate the very next ptr after ptr1 in initial heap"}
+  api_tests/extended_memory_test_page_memory_exceeded {"s":"sbrk should have failed for trying to allocate too much memory"}
+  api_tests/print_tests {"s":"character is not in allowed character set for names"}
+  api_tests/types_tests {"s":"string is too long to be a valid name"}
+  api_tests/permission_usage_tests action_type_name != string(): unknown action type linkauth
 ✔ block_tests.cpp
 ✔ block_timestamp_tests.cpp
 ✔ bootseq_tests.cpp
