@@ -1,0 +1,45 @@
+alias rm='rm -i'
+alias ls='ls -G -p'
+alias ll='ls -l'
+alias la='ls -la'
+alias hd='hexdump -C'
+alias bc='bc -lq'
+alias up='cd ..'
+md () {
+   mkdir -p $1
+   cd $1
+}
+export GREP_OPTIONS='--color=auto'
+# export GREP_COLOR='1;30;40'
+export LLVMINC='/usr/local/Cellar/llvm@4/4.0.1/lib/clang/4.0.1/include/'
+export BOOSTINC='/usr/local/Cellar/boost/1.67.0_1/include/boost'
+export CPPINC='/usr/include/c++/4.2.1'
+export PS1='\w\$ '
+export WALLETPASS="PW5HvPSBtiBFFhiUNcBkPKDi63GSszUqvC9hMhFhS34j2bdRBYqwZ"
+export PUBKEY1="EOS5ayWy3BVD14dT4cLsp4QCihFnDb3PthoFK6EEquNSW8hgCSijF"
+export PUBKEY2="EOS8SWjJzk1G8q7kCxwnfmCfASMiQ3kXWFENPnQEbfAFwYAtRCgfF"
+export EOSPUBKEY=EOS6MRyAjQq8ud7hVNYcfnVPJqcVpscN5So8BhtHuGYqET5GDW5CV
+export EOSPRIVKEY=5KQwrPbwdL6PhXujxW37FSSQZ1JiwsST4cqQzDeyXtP79zkvFD3
+start_nodeos () {
+	nodeos -e -p eosio \
+	--plugin eosio::chain_api_plugin \
+    --plugin eosio::history_api_plugin \
+    --contracts-console \
+    --delete-all-blocks \
+    --verbose-http-errors true
+}
+make_account () {
+    cleos create account eosio $1 $PUBKEY1 $PUBKEY2
+}
+show_accounts () {
+    cleos get accounts $PUBKEY2
+}
+unlock_wallet () {
+	cleos wallet unlock --password $WALLETPASS
+}
+set_contract () {	# acnt contractDir (looks for *.wasm and *.abi in Dir)
+	cleos set contract $1 $2 
+}
+push_action () {   # acnt action arg
+	cleos push action $1 $2 [\"$3\"] -p $1@active
+}
