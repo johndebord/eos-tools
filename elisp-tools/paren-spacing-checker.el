@@ -5,9 +5,10 @@
 ;;
 ;; ALGORITHM DESCRIPTION
 ;; ---------------------
-;; Go forward a expression until cursor lands on an open-paren or just after a close-paren
+;; Go forward an expression until cursor lands on an open-paren or just after a close-paren
 ;;
-;; If the cursor lands on an open paren promt the user if a space should be added
+;; If the cursor lands on an open-paren  prompt the user if a space should be added
+;; If the cursor lands on an close-paren prompt the user if a space should be added
 ;;
 ;; open-paren-function:
 ;;     go forward one character
@@ -47,10 +48,10 @@
 
 (defun paren-spacing-edit ()
   (interactive)
-  (forward-sexp)
-  (cond ((eq (char-after) #x28)
-	 (prompt-user-for-open-paren-edit))
-	((eq (char-before) #x29)
-	 (prompt-user-for-close-paren-edit))
-	)
+  (search-forward-regexp (rx (or "(" ")")))
+  (cond ((eq (char-before) #x28)
+         (prompt-user-for-open-paren-edit))
+        ((eq (char-before) #x29)
+         (prompt-user-for-close-paren-edit))
+        )
   )
