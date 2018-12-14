@@ -82,4 +82,3 @@ TODO BEFORE PULL REQUEST
 
 /Users/johndebord/et a
 eosio-cpp -I../ -I/usr/local/include/ -c test_transaction.cpp 
-
