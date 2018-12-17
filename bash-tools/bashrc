@@ -4,7 +4,17 @@ alias ll='ls -l'
 alias la='ls -la'
 alias hd='hexdump -C'
 alias bc='bc -lq'
-alias up='cd ..'
+up () {
+  if [ $# -lt 1 ]
+  then
+    cd ..
+  else
+  for j in $(seq $1);
+	do
+   	  cd ..
+	done
+  fi
+}
 md () {
    mkdir -p $1
    cd $1
@@ -40,6 +50,6 @@ unlock_wallet () {
 set_contract () {	# acnt contractDir (looks for *.wasm and *.abi in Dir)
 	cleos set contract $1 $2 
 }
-push_action () {   # acnt action arg
-	cleos push action $1 $2 [\"$3\"] -p $1@active
+push_action () {   # acnt action arglist   (example arglist is '["abc", "def", 42]')
+	cleos push action $1 $2 $3 -p $1@active
 }
