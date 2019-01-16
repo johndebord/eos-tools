@@ -4,6 +4,7 @@ alias ll='ls -l'
 alias la='ls -la'
 alias hd='hexdump -C'
 alias bc='bc -lq'
+alias fpat='find . -type f -name "*.[ch]pp" | xargs fgrep'
 up () {
   if [ $# -lt 1 ]
   then
